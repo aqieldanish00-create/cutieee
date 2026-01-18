@@ -139,7 +139,7 @@ button:hover{transform:scale(1.12)}
       Ini perasaan aku… dalam bentuk cerita.
     </p>
     <div class="controls">
-      <button onclick="next()">Next</button>
+     <button class="next-btn">Next</button>
     </div>
   </div>
 </div>
@@ -154,7 +154,7 @@ button:hover{transform:scale(1.12)}
     </p>
     <div class="controls">
       <button onclick="back()">Back</button>
-      <button onclick="next()">Next</button>
+      <button class="next-btn">Next</button>
     </div>
   </div>
 </div>
@@ -246,41 +246,41 @@ button:hover{transform:scale(1.12)}
     </p>
   </div>
 </div>
-
 <script>
-const scenes=document.querySelectorAll('.scene');
-const bg=document.getElementById('bg');
-const bgs=['bg1','bg2','bg3','bg4','bg5','bg6','bg7','bg8'];
-let i=0;
+document.addEventListener("DOMContentLoaded", () => {
+  const scenes = document.querySelectorAll(".scene");
+  const bg = document.getElementById("bg");
+  const bgs = ["bg1","bg2","bg3","bg4","bg5","bg6","bg7","bg8"];
+  let index = 0;
 
-function next(){
-  if(i<scenes.length-1){
-    scenes[i].classList.remove('active');
-    i++;
-    scenes[i].classList.add('active');
-    bg.className='bg '+bgs[i];
+  function show(i){
+    scenes.forEach(s => s.classList.remove("active"));
+    scenes[i].classList.add("active");
+    bg.className = "bg " + (bgs[i] || "bg1");
   }
-}
-function back(){
-  if(i>0){
-    scenes[i].classList.remove('active');
-    i--;
-    scenes[i].classList.add('active');
-    bg.className='bg '+bgs[i];
-  }
-}
 
-/* particles */
-setInterval(()=>{
-  const p=document.createElement('div');
-  p.className='p';
-  p.innerHTML='❤️';
-  p.style.left=Math.random()*100+'vw';
-  p.style.fontSize=14+Math.random()*26+'px';
-  document.body.appendChild(p);
-  setTimeout(()=>p.remove(),9000);
-},220);
+  document.querySelectorAll(".next-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if(index < scenes.length - 1){
+        index++;
+        show(index);
+      }
+    });
+  });
+
+  document.querySelectorAll(".back-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if(index > 0){
+        index--;
+        show(index);
+      }
+    });
+  });
+
+  show(index);
+});
 </script>
+
 
 </body>
 </html>
