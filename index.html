@@ -2,285 +2,156 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<title>Untuk Awak ❤️</title>
+<title>For You ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
+
 body{
   height:100vh;
-  overflow:hidden;
-  font-family:'Segoe UI',sans-serif;
-  background:black;
-  color:white;
-}
-
-/* BACKGROUND */
-.bg{
-  position:absolute;
-  inset:0;
-  transition:2s ease;
-  z-index:0;
-}
-.bg1{background:radial-gradient(circle at top,#ff5f8f,#000)}
-.bg2{background:linear-gradient(135deg,#141e30,#243b55)}
-.bg3{background:linear-gradient(135deg,#42275a,#734b6d)}
-.bg4{background:linear-gradient(135deg,#232526,#414345)}
-.bg5{background:linear-gradient(135deg,#ffafbd,#ffc3a0)}
-.bg6{background:radial-gradient(circle,#fff,#ff9a9e)}
-.bg7{background:radial-gradient(circle,#ffd1dc,#ff5f8f)}
-.bg8{background:#000}
-
-/* SCENES */
-.scene{
-  position:absolute;
-  inset:0;
   display:flex;
   justify-content:center;
   align-items:center;
-  opacity:0;
-  transform:scale(1.15);
-  transition:1.4s ease;
-  z-index:1;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  font-family:'Segoe UI',sans-serif;
+  color:white;
+  overflow:hidden;
 }
+
+/* SCENE WRAPPER */
+#app{
+  position:relative;
+  width:100%;
+  max-width:420px;
+}
+
+/* SCENE */
+.scene{
+  display:none;
+  animation:fade 0.8s ease;
+}
+
 .scene.active{
-  opacity:1;
-  transform:scale(1);
+  display:block;
 }
 
 /* CARD */
 .card{
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(18px);
-  padding:40px;
-  border-radius:28px;
-  max-width:480px;
+  background:rgba(255,255,255,0.18);
+  backdrop-filter:blur(12px);
+  padding:32px;
+  border-radius:24px;
   text-align:center;
-  box-shadow:0 0 50px rgba(255,255,255,.25);
-  animation:float 4s ease-in-out infinite;
-}
-@keyframes float{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-14px)}
-  100%{transform:translateY(0)}
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
 }
 
-/* TEXT EFFECT */
-.reveal{
-  opacity:0;
-  animation:reveal 1.8s forwards;
-}
-@keyframes reveal{
-  to{opacity:1}
-}
-.delay1{animation-delay:.5s}
-.delay2{animation-delay:1.2s}
-.delay3{animation-delay:2s}
+/* TEXT */
+h2{margin-bottom:12px}
+p{line-height:1.6}
 
-/* BUTTON */
+/* BUTTONS */
 .controls{
-  margin-top:30px;
+  margin-top:24px;
   display:flex;
-  gap:14px;
+  gap:12px;
 }
+
 button{
   flex:1;
-  padding:14px;
+  padding:12px;
   border:none;
-  border-radius:30px;
+  border-radius:24px;
   background:white;
   color:#ff4f81;
-  font-weight:bold;
+  font-weight:600;
   cursor:pointer;
-  transition:.3s;
-}
-button:hover{transform:scale(1.12)}
-
-/* PARTICLES */
-.p{
-  position:absolute;
-  font-size:18px;
-  animation:rise 9s linear infinite;
-  opacity:.9;
-}
-@keyframes rise{
-  from{transform:translateY(110vh);opacity:1}
-  to{transform:translateY(-10vh);opacity:0}
+  transition:.25s;
 }
 
-/* END */
-.glow{
-  animation:glow 2s infinite alternate;
+button:hover{
+  transform:scale(1.05);
 }
-@keyframes glow{
-  from{text-shadow:0 0 10px white}
-  to{text-shadow:0 0 35px #ff5f8f}
-}
-.explode{
-  animation:explode 1s ease forwards;
-}
-@keyframes explode{
-  from{transform:scale(1)}
-  to{transform:scale(1.4);opacity:0}
+
+/* ANIMATION */
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
 }
 </style>
 </head>
 
 <body>
 
-<div id="bg" class="bg bg1"></div>
+<div id="app">
 
-<!-- SCENE 1 -->
-<div class="scene active">
-  <div class="card">
-    <h1 class="reveal">❤️ Hai Awak ❤️</h1><br>
-    <p class="reveal delay1">
-      Ini bukan web biasa.<br>
-      Ini perasaan aku… dalam bentuk cerita.
-    </p>
-    <div class="controls">
-     <button class="next-btn">Next</button>
+  <div class="scene active">
+    <div class="card">
+      <h2>❤️ Hai sayaangggg❤️</h2>
+      <p>orang nak mintak maaf kt dia sayanggg</p>
+      <div class="controls">
+        <button data-next>Next</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- SCENE 2 -->
-<div class="scene">
-  <div class="card">
-    <h1 class="reveal">😔</h1><br>
-    <p class="reveal delay1">
-      Aku tahu aku pernah buat silap.<br>
-      Aku pernah buat awak rasa tak cukup.
-    </p>
-    <div class="controls">
-      <button onclick="back()">Back</button>
-      <button class="next-btn">Next</button>
+  <div class="scene">
+    <div class="card">
+      <h2>😔</h2>
+      <p>Orang tahu orang yang salah jujur ikhlas dari hati orang, orang minta maaf</p>
+      <div class="controls">
+        <button data-back>Back</button>
+        <button data-next>Next</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- SCENE 3 -->
-<div class="scene">
-  <div class="card">
-    <h1 class="reveal">🖤</h1><br>
-    <p class="reveal delay1">
-      Tapi satu benda aku pasti…<br>
-      Aku tak pernah berhenti peduli.
-    </p>
-    <div class="controls">
-      <button onclick="back()">Back</button>
-      <button onclick="next()">Next</button>
+  <div class="scene">
+    <div class="card">
+      <h2>💖</h2>
+      <p> Untuk esok goodluck tauu do your bext sayanggg </p>
+      <div class="controls">
+        <button data-back>Back</button>
+        <button data-next>Next</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- SCENE 4 -->
-<div class="scene">
-  <div class="card">
-    <h1 class="reveal">💭</h1><br>
-    <p class="reveal delay1">
-      Setiap kali aku penat,<br>
-      wajah awak yang buat aku tenang.
-    </p>
-    <div class="controls">
-      <button onclick="back()">Back</button>
-      <button onclick="next()">Next</button>
+  <div class="scene">
+    <div class="card">
+      <h2>✨</h2>
+      <p>ILOVEYOUUSOMUCHHH SAYANGGGKUU</p>
     </div>
   </div>
+
 </div>
 
-<!-- SCENE 5 -->
-<div class="scene">
-  <div class="card">
-    <h1 class="reveal">✨</h1><br>
-    <p class="reveal delay1">
-      Aku tak janji aku sempurna…<br>
-      Tapi aku janji aku berusaha.
-    </p>
-    <div class="controls">
-      <button onclick="back()">Back</button>
-      <button onclick="next()">Next</button>
-    </div>
-  </div>
-</div>
-
-<!-- SCENE 6 -->
-<div class="scene">
-  <div class="card">
-    <h1 class="reveal">🌙</h1><br>
-    <p class="reveal delay1">
-      Kalau dunia ni berat…<br>
-      Biar aku jadi tempat awak bersandar.
-    </p>
-    <div class="controls">
-      <button onclick="back()">Back</button>
-      <button onclick="next()">Next</button>
-    </div>
-  </div>
-</div>
-
-<!-- SCENE 7 -->
-<div class="scene">
-  <div class="card">
-    <h1 class="reveal">💖</h1><br>
-    <p class="reveal delay1">
-      Aku pilih awak.<br>
-      Bukan sebab kebiasaan…<br>
-      Tapi sebab hati.
-    </p>
-    <div class="controls">
-      <button onclick="back()">Back</button>
-      <button onclick="next()">Next</button>
-    </div>
-  </div>
-</div>
-
-<!-- SCENE 8 END -->
-<div class="scene">
-  <div class="card explode">
-    <h1 class="glow">❤️ Aku Sayang Awak ❤️</h1><br>
-    <p class="reveal delay1">
-      Hari ni.<br>
-      Esok.<br>
-      Dan selagi aku ada.
-    </p>
-  </div>
-</div>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const scenes = document.querySelectorAll(".scene");
-  const bg = document.getElementById("bg");
-  const bgs = ["bg1","bg2","bg3","bg4","bg5","bg6","bg7","bg8"];
+(() => {
+  const scenes = document.querySelectorAll('.scene');
   let index = 0;
 
   function show(i){
-    scenes.forEach(s => s.classList.remove("active"));
-    scenes[i].classList.add("active");
-    bg.className = "bg " + (bgs[i] || "bg1");
+    scenes.forEach(s => s.classList.remove('active'));
+    scenes[i].classList.add('active');
   }
 
-  document.querySelectorAll(".next-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
+  document.addEventListener('click', e => {
+    if(e.target.matches('[data-next]')){
       if(index < scenes.length - 1){
         index++;
         show(index);
       }
-    });
-  });
-
-  document.querySelectorAll(".back-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
+    }
+    if(e.target.matches('[data-back]')){
       if(index > 0){
         index--;
         show(index);
       }
-    });
+    }
   });
-
-  show(index);
-});
+})();
 </script>
-
 
 </body>
 </html>
