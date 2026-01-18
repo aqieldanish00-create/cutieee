@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Youuuu❤️</title>
+<style>
+body {
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  font-family: Arial;
+  color:white;
+  text-align:center;
+  overflow:hidden;
+}
+.card {
+  background: rgba(255,255,255,0.2);
+  padding:30px;
+  border-radius:20px;
+}
+.heart {
+  position:absolute;
+  animation: fall 5s linear infinite;
+}
+@keyframes fall {
+  from {transform: translateY(-10vh);}
+  to {transform: translateY(110vh);}
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>❤️ Sayang ❤️</h1>
+  <p>
+    Maafkan orang sayanggg.<br><br>
+    goodluck tau untuk exam dia nanti orang selalu doakan dia❤️.<br><br>
+    ILOVEYOUUUCOMELLL ❤️
+  </p>
+</div>
+
+<script>
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+},300);
+</script>
+
+</body>
+</html>
